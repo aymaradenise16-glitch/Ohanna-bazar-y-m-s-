@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f5ef">
+  <title>Ohanna Bazar y Más</title>
+  <meta name="description" content="Descubrí bazar, tecnología, accesorios y mucho más en Ohanna Bazar y Más.">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f8f6f1;
+      color: #292821;
+    }
+    header {
+      background: #fff;
+      padding: 18px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #eee8de;
+    }
+    .logo { font-size: 21px; font-weight: 800; color: #bd604d; }
+    header a { color: #292821; text-decoration: none; }
+    .hero {
+      padding: 55px 6%;
+      background: #f0dfd1;
+      text-align: center;
+    }
+    .hero h1 { font-size: clamp(30px, 6vw, 48px); margin: 0 0 14px; }
+    .hero p { line-height: 1.6; }
+    .btn {
+      display: inline-block;
+      background: #bd604d;
+      color: white;
+      padding: 13px 20px;
+      border-radius: 9px;
+      text-decoration: none;
+      font-weight: bold;
+      border: 0;
+      cursor: pointer;
+    }
+    main { max-width: 1100px; margin: auto; padding: 28px 16px; }
+    h2 { margin-top: 12px; }
+    .tools { display: flex; gap: 10px; margin: 18px 0; flex-wrap: wrap; }
+    input, select {
+      padding: 12px;
+      border: 1px solid #ddd2c6;
+      border-radius: 8px;
+      background: white;
+      font-size: 15px;
+    }
+    input { flex: 1; min-width: 150px; }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: white;
+      border-radius: 13px;
+      overflow: hidden;
+      box-shadow: 0 3px 12px #342a1710;
+      padding-bottom: 14px;
+    }
+    .card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: #eee;
+    }
+    .card h3 { font-size: 16px; margin: 12px 12px 6px; }
+    .card p { margin: 6px 12px; color: #6e6a62; font-size: 13px; }
+    .price { color: #bd604d !important; font-size: 18px !important; font-weight: bold; }
+    .card .btn { margin: 8px 12px 0; padding: 10px; font-size: 13px; }
+    .empty { padding: 25px 0; color: #6e6a62; }
+    .contact {
+      text-align: center;
+      background: #e5eee3;
+      border-radius: 14px;
+      padding: 28px 16px;
+      margin: 30px 0;
+    }
+    footer {
+      background: #292821;
+      color: white;
+      text-align: center;
+      padding: 24px 12px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="logo" href="#">Ohanna Bazar y Más</a>
+    <a href="#productos">Ver productos ↓</a>
+  </header>
+
+  <section class="hero">
+    <h1>¡Encontrá eso que necesitás!</h1>
+    <p>Bazar, tecnología, accesorios y mucho más.<br>
+       ¡Gracias por elegir nuestro emprendimiento!</p>
+    <a class="btn" href="#productos">Explorar productos</a>
+  </section>
+
+  <main>
+    <h2 id="productos">Nuestros productos</h2>
+    <p>Elegí tu favorito y consultanos por WhatsApp.</p>
+
+    <div class="tools">
+      <input id="buscar" type="search" placeholder="Buscar productos...">
+      <select id="categoria" aria-label="Filtrar por categoría">
+        <option value="">Todas las categorías</option>
+        <option value="Bazar">Bazar</option>
+        <option value="Tecnología">Tecnología</option>
+        <option value="Accesorios">Accesorios</option>
+      </select>
+    </div>
+
+    <div id="lista" class="products"></div>
+    <p id="vacio" class="empty" hidden>No encontramos productos con esa búsqueda.</p>
+
+    <section class="contact">
+      <h2>¿Tenés alguna consulta?</h2>
+      <p>Escribinos y te ayudamos a elegir.</p>
+      <a class="btn whatsapp" href="#" target="_blank" rel="noopener">
+        Consultar por WhatsApp
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="anio"></span> Ohanna Bazar y Más · Todos los derechos reservados
+  </footer>
+
+  <script>
+    // Reemplazá estos ejemplos por tus productos y precios reales.
+    const productos = [
+      {
+        nombre: "Organizador para el hogar",
+        categoria: "Bazar",
+        precio: 0,
+        descripcion: "Práctico y funcional.",
+        imagen: "https://placehold.co/600x600/f0dfd1/59483d?text=Producto+de+bazar"
+      },
+      {
+        nombre: "Parlante Bluetooth",
+        categoria: "Tecnología",
+        precio: 0,
+        descripcion: "Música donde quieras.",
+        imagen: "https://placehold.co/600x600/e5eee3/344c3b?text=Parlante"
+      },
+      {
+        nombre: "Botella térmica",
+        categoria: "Bazar",
+        precio: 0,
+        descripcion: "Ideal para todos los días.",
+        imagen: "https://placehold.co/600x600/f4e7d7/59483d?text=Botella"
+      },
+      {
+        nombre: "Accesorio de moda",
+        categoria: "Accesorios",
+        precio: 0,
+        descripcion: "Un detalle para tu estilo.",
+        imagen: "https://placehold.co/600x600/f4deda/7c443d?text=Accesorios"
+      }
+    ];
+
+    // Configuraremos tu número de WhatsApp en el siguiente paso.
+    const WHATSAPP = "54911XXXXXXXX";
+
+    function enlaceWhatsApp(mensaje) {
+      return "https://wa.me/" + WHATSAPP + "?text=" +
+        encodeURIComponent(mensaje);
+    }
+
+    function mostrarProductos() {
+      const busqueda = document.getElementById("buscar").value
+        .toLowerCase().trim();
+      const categoria = document.getElementById("categoria").value;
+
+      const filtrados = productos.filter(p =>
+        p.nombre.toLowerCase().includes(busqueda) &&
+        (!categoria || p.categoria === categoria)
+      );
+
+      document.getElementById("lista").innerHTML = filtrados.map(p => `
+        <article class="card">
+          <img src="${p.imagen}" alt="${p.nombre}" loading="lazy">
+          <h3>${p.nombre}</h3>
+          <p>${p.categoria}</p>
+          <p>${p.descripcion}</p>
+          <p class="price">${p.precio > 0
+            ? p.precio.toLocaleString("es-AR", {
+                style: "currency", currency: "ARS",
+                maximumFractionDigits: 0
+              })
+            : "Consultar precio"}</p>
+          <a class="btn" target="_blank" rel="noopener"
+            href="${enlaceWhatsApp("Hola, quiero consultar por: " + p.nombre)}">
+            Consultar / Comprar
+          </a>
+        </article>
+      `).join("");
+
+      document.getElementById("vacio").hidden = filtrados.length > 0;
+    }
+
+    document.getElementById("buscar").addEventListener("input", mostrarProductos);
+    document.getElementById("categoria").addEventListener("change", mostrarProductos);
+    document.getElementById("anio").textContent = new Date().getFullYear();
+
+    document.querySelector(".whatsapp").href =
+      enlaceWhatsApp("Hola, quiero consultar por los productos de Ohanna Bazar y Más.");
+
+    mostrarProductos();
+  </script>
+</body>
+</html>
